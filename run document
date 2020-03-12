@@ -1,0 +1,22 @@
+ssh robot@192.168.43.205
+rosparam set use_sim_time false
+rosrun map_server map_saver -f gmap2
+rosrun teleop_twist_keyboard teleop_twist_keyboard.py
+rosrun gmapping slam_gmapping scan:=/scan _base_frame:=base_link _odom_frame:=odom _xmin:=-15 _ymin:=-15 _xmax:=15 _ymax:=1
+roslaunch hector_slam_launch tutorial.launch map_size:=500
+roslaunch hector_slam_launch tutorial.launch
+roslaunch crsm_slam crsm_slam_simulation.launch 
+roslaunch rf2o_laser_odometry rf2o_laser_odometry.launch
+rosrun rviz rviz
+
+
+
+export ROS_MASTER_URI=http://192.168.43.205:11311
+export ROS_HOSTNAME=192.168.43.161
+export ROS_IP=192.168.43.161
+
+
+
+
+
+
