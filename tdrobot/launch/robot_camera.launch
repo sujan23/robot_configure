@@ -1,0 +1,5 @@
+<launch>
+  <node type="serial_node.py" pkg="rosserial_python" name="robot_arduino" args="/dev/ttyACM0"></node>
+ <node type="raspicam_node" pkg="raspicam_node" name="raspicam_node" args="_fps:=30"></node>
+  <node type="rosservice" pkg="rosservice" name="start" args="call /raspicam_node/start_capture"></node>
+</launch>
